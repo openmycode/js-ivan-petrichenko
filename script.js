@@ -1,6 +1,13 @@
 'use strict';
 
-const numbersOfFilms = prompt('Сколько фильмов Вы уже посмотрели?');
+let numbersOfFilms;
+
+function start() {
+	numbersOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');
+	while (numbersOfFilms === '' || numbersOfFilms === null || isNaN(numbersOfFilms)) {
+		numbersOfFilms = +prompt('Сколько фильмов Вы уже посмотрели?');
+	}
+}
 
 const personalMovieDB = {
 	count: numbersOfFilms,
@@ -10,50 +17,34 @@ const personalMovieDB = {
 	privat: false,
 }
 
-switch (true) {
-	case personalMovieDB.count < 10:
-		console.log("Просмотренно слишком мало фильмов!");
-		break;
-	case personalMovieDB.count >= 10 && personalMovieDB.count < 30: 
-		console.log("Вы классический зритель");
-		break;
-	default:
-		console.log("Вы настоящий киноман!");
-		break;
+function detectPersonalLevel() {
+	switch (true) {
+		case personalMovieDB.count < 10:
+			console.log("Просмотренно слишком мало фильмов!");
+			break;
+		case personalMovieDB.count >= 10 && personalMovieDB.count < 30:
+			console.log("Вы классический зритель");
+			break;
+		default:
+			console.log("Вы настоящий киноман!");
+			break;
+	}
 }
 
-// for (let i = 0; i < 2; i++) {
-// 	const film = prompt('Один из последних просмотренных фильмов?');
-// 	const filmScore = prompt('На сколько оцените его?');
-// 	if (film !== null && filmScore !== null && film !== '' && filmScore !== '' && film.length < 50) {
-// 		personalMovieDB.movies[film] = filmScore;
-// 	} else {
-// 		i--;
-// 	}
+detectPersonalLevel();
 
-// }
-// let i = 0;
-// while (i < 2) {
-// 	const film = prompt('Один из последних просмотренных фильмов?');
-// 	const filmScore = prompt('На сколько оцените его?');
-// 	if (film !== null && filmScore !== null && film !== '' && filmScore !== '' && film.length < 50) {
-// 		personalMovieDB.movies[film] = filmScore;
-// 	} else {
-// 		i--;
-// 	}
-// 	i++;
-// }
-
-let i = 0;
-do {
-	const film = prompt('Один из последних просмотренных фильмов?');
-	const filmScore = prompt('На сколько оцените его?');
-	if (film !== null && filmScore !== null && film !== '' && filmScore !== '' && film.length < 50) {
-		personalMovieDB.movies[film] = filmScore;
-	} else {
-		i--;
+function rememberMyFilms() {
+	for (let i = 0; i < 2; i++) {
+		const film = prompt('Один из последних просмотренных фильмов?');
+		const filmScore = prompt('На сколько оцените его?');
+		if (film !== null && filmScore !== null && film !== '' && filmScore !== '' && film.length < 50) {
+			personalMovieDB.movies[film] = filmScore;
+		} else {
+			i--;
+		}
 	}
-	i++;
-} while (i < 2);
+}
+
+rememberMyFilms();
 
 console.log(personalMovieDB);
