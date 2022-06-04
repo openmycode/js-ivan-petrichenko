@@ -22,7 +22,18 @@ switch (true) {
 		break;
 }
 
-for (let i = 0; i < 2; i++) {
+// for (let i = 0; i < 2; i++) {
+// 	const film = prompt('Один из последних просмотренных фильмов?');
+// 	const filmScore = prompt('На сколько оцените его?');
+// 	if (film !== null && filmScore !== null && film !== '' && filmScore !== '' && film.length < 50) {
+// 		personalMovieDB.movies[film] = filmScore;
+// 	} else {
+// 		i--;
+// 	}
+
+// }
+let i = 0;
+while (i < 2) {
 	const film = prompt('Один из последних просмотренных фильмов?');
 	const filmScore = prompt('На сколько оцените его?');
 	if (film !== null && filmScore !== null && film !== '' && filmScore !== '' && film.length < 50) {
@@ -30,6 +41,7 @@ for (let i = 0; i < 2; i++) {
 	} else {
 		i--;
 	}
+	i++;
 }
 
 console.log(personalMovieDB);
